@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard monitoring persawahan (tampilan aplikasi)</title>
+<link rel="stylesheet" href="ui.css">
+</head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5C9 7.5 6.5 10.3 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 10.3 15 7.5 12 3.5z"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7.5 18.5a4 4 0 0 1-.7-7.9 5.5 5.5 0 0 1 10.6-1.3 4.6 4.6 0 0 1-.4 9.2z"/></symbol>
+<symbol id="i-gate" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h8"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5v8.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="i-sensor" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-10a6 6 0 0 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 9v4l2.5 2M9.5 3h5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8"/></symbol>
+</defs></svg>
+<main>
+<nav class="top" aria-label="Halaman"><a href="../index.html">Beranda</a><a href="../3d/index.html">Model 3D</a><a href="index.html" aria-current="page">Dashboard UI</a></nav>
+<div class="app" data-screen="home">
+
+<section class="screen glass" id="s-home" data-own="home" aria-label="Beranda">
+<header class="hd"><span class="ib" aria-hidden="true"><svg class="ic"><use href="#i-leaf"/></svg></span>
+<button class="ib" type="button" data-alert aria-label="Lihat peringatan"><svg class="ic"><use href="#i-bell"/></svg></button></header>
+<div><h1 class="hello"><span id="gr"></span>Petani</h1><p class="mut">Pantau air dan udara sawahmu agar tetap aman.</p></div>
+<div class="loc glass"><svg class="ic"><use href="#i-pin"/></svg><span>Kelapa Nunggal, Bogor</span><span class="chip" id="c-all"></span></div>
+<div class="sh"><h2>Sensor Saya</h2><button class="lnk" type="button" data-go="sensor">Lihat semua</button></div>
+<div class="rail">
+<button class="sc glass" type="button" data-go="sensor"><span class="ico"><svg class="ic"><use href="#i-drop"/></svg></span><b>Sensor pH V2</b><span class="val" id="h-ph"></span><span class="chip" id="c-ph"></span></button>
+<button class="sc glass" type="button" data-go="sensor"><span class="ico"><svg class="ic"><use href="#i-cloud"/></svg></span><b>Sensor MQ7</b><span class="val" id="h-co"></span><span class="chip" id="c-co"></span></button>
+<button class="sc glass" type="button" data-go="sensor"><span class="ico"><svg class="ic"><use href="#i-gate"/></svg></span><b>Pintu irigasi</b><span class="val" id="h-gt"></span><span class="chip" id="c-gt"></span></button>
+</div>
+<h2 style="margin:0">Perhatian Hari Ini</h2>
+<button class="rc glass" type="button" data-go="care"><span class="ico"><svg class="ic"><use href="#i-gate"/></svg></span><span class="grow"><b id="at-t"></b><small class="sub" id="at-s"></small></span><svg class="ic"><use href="#i-chev"/></svg></button>
+<nav class="bar glass" aria-label="Menu"></nav>
+</section>
+
+<section class="screen glass" id="s-sensor" data-own="sensor" aria-label="Sensor">
+<header class="hd"><button class="ib" type="button" data-go="home" aria-label="Kembali ke beranda"><svg class="ic"><use href="#i-back"/></svg></button><span class="chip" id="c-all2"></span></header>
+<div><h1>Kondisi Air dan Udara</h1><small id="pend"></small></div>
+<div class="hero glass"><div><div id="g1"></div><small>pH air irigasi</small></div><div><div id="g2"></div><small>CO udara (ppm)</small></div></div>
+<div class="box glass"><h2>Ringkasan Sensor</h2>
+<div class="stats">
+<div class="st"><span class="ico"><svg class="ic"><use href="#i-drop"/></svg></span><small>pH</small><b id="s-ph"></b></div>
+<div class="st"><span class="ico"><svg class="ic"><use href="#i-cloud"/></svg></span><small>CO</small><b id="s-co"></b></div>
+<div class="st"><span class="ico"><svg class="ic"><use href="#i-gate"/></svg></span><small>Pintu</small><b id="s-gt"></b></div>
+<div class="st"><span class="ico"><svg class="ic"><use href="#i-timer"/></svg></span><small>Respons</small><b>25,8 dtk</b></div>
+</div></div>
+<div class="box glass"><h2>Grafik 60 detik terakhir</h2><small>pH air irigasi</small><canvas class="ch" id="c1"></canvas><small>CO udara (ppm)</small><canvas class="ch" id="c2"></canvas></div>
+<div class="box glass tip"><span class="ico"><svg class="ic"><use href="#i-leaf"/></svg></span><div><h2>Cara kerja proteksi</h2><p>Set point pH 6 sampai 9 dan CO di bawah 5 ppm. Di luar rentang pH, pintu irigasi menutup otomatis dan air dialihkan ke kali besar.</p></div></div>
+<div class="act"><button class="btn" type="button" id="bad"><svg class="ic"><use href="#i-drop"/></svg>Simulasi limbah pabrik</button><button class="sq" type="button" id="good" aria-label="Kembalikan ke kondisi aman"><svg class="ic"><use href="#i-refresh"/></svg></button></div>
+<details class="glass"><summary>Atur nilai sensor</summary><div id="ctl"></div></details>
+<nav class="bar glass" aria-label="Menu"></nav>
+</section>
+
+<section class="screen glass" id="s-care" data-own="care" aria-label="Aktivitas">
+<header class="hd"><h1>Aktivitas</h1></header>
+<div class="tabs glass" role="tablist" aria-label="Aktivitas">
+<button type="button" role="tab" data-tab="today" aria-selected="true">Hari ini</button>
+<button type="button" role="tab" data-tab="alert" aria-selected="false">Peringatan</button>
+<button type="button" role="tab" data-tab="sistem" aria-selected="false">Sistem</button></div>
+<div id="p-today" role="tabpanel">
+<div class="rc glass"><span class="ico"><svg class="ic"><use href="#i-drop"/></svg></span><span class="grow"><b>Cek pH air irigasi</b><small class="sub" id="rs-ph"></small></span><span class="ckc" id="k-ph"><svg class="ic ok"><use href="#i-check"/></svg><svg class="ic no"><use href="#i-x"/></svg></span></div>
+<div class="rc glass"><span class="ico"><svg class="ic"><use href="#i-cloud"/></svg></span><span class="grow"><b>Cek gas CO udara</b><small class="sub" id="rs-co"></small></span><span class="ckc" id="k-co"><svg class="ic ok"><use href="#i-check"/></svg><svg class="ic no"><use href="#i-x"/></svg></span></div>
+<div class="rc glass"><span class="ico"><svg class="ic"><use href="#i-gate"/></svg></span><span class="grow"><b>Pintu irigasi</b><small class="sub" id="rs-gt"></small></span><span class="ckc" id="k-gt"><svg class="ic ok"><use href="#i-check"/></svg><svg class="ic no"><use href="#i-x"/></svg></span></div>
+</div>
+<div id="p-alert" role="tabpanel" hidden><ul class="evl" id="evl"></ul></div>
+<div id="p-sistem" role="tabpanel" hidden>
+<div class="box glass"><h2>Alur data sistem</h2><div class="chain" id="chain"></div>
+<small>Data dikirim tiap 500 ms dari sensor node. ESP32 juga menggerakkan motor stepper lewat driver ULN2003 untuk pintu irigasi.</small></div>
+<div class="qos">
+<div>Waktu respons<b>25,8 detik</b></div><div>Delay komunikasi<b>58,13 ms</b></div>
+<div>Throughput<b>76,68 kbps</b></div><div>Jitter<b>0,192 ms</b></div>
+<div>Jangkauan NRF24L01<b>120 m, 100%</b></div><div>Error sensor pH<b>0,755%</b></div></div>
+<small>Angka dari bagian 3 jurnal Muyassar dkk. (2024).</small>
+</div>
+<div class="box glass guide" id="guide"><div><h2>Panduan Sistem</h2><p class="mut">Pelajari alur data dari sensor sampai ke aplikasi.</p><button class="btn s" type="button" data-go="sistem">Pelajari</button></div><span class="ico"><svg class="ic"><use href="#i-leaf"/></svg></span></div>
+<nav class="bar glass" aria-label="Menu"></nav>
+</section>
+
+</div></main>
+<script src="../shared/state.js"></script>
+<script src="../shared/controls.js"></script>
+<script>mountControls($("ctl"))</script>
+<script src="dashboard.js"></script>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Model 3D prototipe monitoring persawahan (Muyassar dkk., 2024)</title>
+<link rel="stylesheet" href="../ui/ui.css"><link rel="stylesheet" href="scene.css">
+</head><body><main>
+<nav class="top" aria-label="Halaman"><a href="../index.html">Beranda</a><a href="index.html" aria-current="page">Model 3D</a><a href="../ui/index.html">Dashboard UI</a></nav>
+<div class="v3">
+<section class="stagewrap glass" aria-label="Model 3D">
+<div id="stage" role="img" aria-label="Model 3D miniatur sawah bertingkat dengan sensor pH, sensor MQ7, motor stepper, dan pintu irigasi"></div>
+<div class="ov tl seg" role="group" aria-label="Sudut pandang"><button type="button" data-v="iso" aria-pressed="true">Isometrik</button><button type="button" data-v="depan" aria-pressed="false">Samping</button><button type="button" data-v="atas" aria-pressed="false">Atas</button></div>
+<div class="ov tr"><span class="chip" id="st" aria-live="polite"></span></div>
+<div class="ov bl legend"><span><i style="background:#2f86b0"></i>Air aman</span><span><i style="background:#9a5b1d"></i>Air tercemar</span><span><i style="background:#e0452b"></i>CO tinggi</span></div>
+<div class="ov br zoom"><button type="button" id="zi" aria-label="Perbesar">+</button><button type="button" id="zo" aria-label="Perkecil">&minus;</button><button type="button" id="rs" aria-label="Atur ulang kamera">&#8634;</button></div>
+</section>
+<aside class="side" aria-label="Panel kontrol">
+<div class="glass box"><h2>Simulasi sensor</h2><div id="ctl"></div></div>
+<div class="glass box"><h2>Komponen</h2><ul class="comp" id="comp"></ul><p id="cdesc">Pilih komponen untuk memfokuskan kamera. Geser mendatar untuk memutar, Ctrl + scroll atau cubit dua jari untuk zoom.</p></div>
+<div class="glass box"><h2>Tampilan</h2><label class="ck"><input type="checkbox" id="lb" checked> Label komponen</label><label class="ck"><input type="checkbox" id="dm"> Ukuran (cm)</label><small>Simulasi di layar berdasarkan Gambar 3 jurnal Muyassar, Sujono, &amp; Fath (2024), bukan alat sungguhan.</small></div>
+<div class="glass box"><h2>Kunci simulasi</h2>
+<label class="sw"><input type="checkbox" id="lk" role="switch"><span class="knob" aria-hidden="true"></span><span id="lkt">Terbuka</span></label>
+<form id="lkf" class="lkf" hidden><label for="pw">Kata sandi</label><input id="pw" type="password" autocomplete="off"><div class="row"><button type="submit" id="lko">Kunci</button><button type="button" id="lkc">Batal</button></div><small id="lke" role="alert"></small></form>
+<small>Saat terkunci, pH dan gas CO tidak bisa diubah dari halaman atau perangkat mana pun. Mengunci dan membuka perlu kata sandi.</small></div>
+</aside>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../shared/state.js"></script>
+<script src="../shared/controls.js"></script>
+<script>mountControls($("ctl"))</script>
+<script src="scene.js"></script>
+</main></body></html>
