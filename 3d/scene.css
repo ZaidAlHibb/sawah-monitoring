@@ -46,8 +46,12 @@ html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--g) transp
 .side{overflow-y:auto;overscroll-behavior:contain;padding:2px 6px 8px 2px;scrollbar-width:thin;scrollbar-color:var(--g) transparent}}
 @media(min-width:1120px) and (min-height:660px){html,body{height:100%;overflow:hidden}}
 @media(max-width:1119px){
-.v3{gap:14px;padding-bottom:24px}
-.stagewrap{position:sticky;top:8px;z-index:5;height:46svh;min-height:300px;box-shadow:0 10px 26px rgba(0,0,0,.2)}}
+html,body{height:100%;overflow:hidden}
+main{padding-bottom:12px}
+.v3{gap:10px;height:calc(100vh - 84px);height:calc(100dvh - 84px);min-height:0}
+.stagewrap{position:relative;top:auto;z-index:auto;flex:0 0 44%;height:auto;min-height:0;box-shadow:none;border-radius:22px}
+.side{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:2px 2px calc(12px + env(safe-area-inset-bottom));scrollbar-width:thin;scrollbar-color:var(--g) transparent}}
+@media(max-width:1119px) and (max-height:520px){html,body{height:auto;overflow:auto}.v3{height:auto}.stagewrap{flex:none;height:85vh;min-height:300px}.side{overflow:visible}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.side>.box{animation:none}}
 
 

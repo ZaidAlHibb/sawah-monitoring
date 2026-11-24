@@ -118,3 +118,6 @@ frame();
   $("lkc").onclick=function(){fm.hidden=true};
   fm.onsubmit=function(e){e.preventDefault();
     SAWAH.setLock(!SAWAH.S.locked,pw.value).then(function(){fm.hidden=true;pw.value=""}).catch(function(){er.textContent="Kata sandi salah.";pw.select()})}})();
+
+/* layar kecil: label komponen dimatikan dulu supaya model tidak penuh teks */
+if(window.innerWidth<640){show.c=false;$("lb").checked=false}
